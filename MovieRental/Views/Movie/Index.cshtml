@@ -1,0 +1,26 @@
+﻿@model IEnumerable<MovieRental.Models.Movie>
+@{
+    ViewBag.Title = "Index";
+}
+<h2>Movies</h2>
+@if (!Model.Any())
+{
+    <p>We Dont Have Any Movie Yet.!</p>
+}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Movie Name</th>
+            <th>Genre</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var movies in Model)
+        {
+            <tr>
+                <td>@Html.ActionLink(@movies.Name, "Details", "Movie", new { id = movies.Id }, null) </td>
+                <td>@movies.Genre.Name</td>
+            </tr>
+        }
+    </tbody>
+</table>
