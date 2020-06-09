@@ -2,7 +2,26 @@
 @{
     ViewBag.Title = "Index";
 }
+
+<style>
+   button a {
+        text-decoration: none;
+        color: white;
+         font-weight: bold;
+    }
+
+     button a:hover {
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+    }
+</style>
 <h2>Movies</h2>
+
+
+
+<button class="btn btn-primary text-uppercase">@Html.ActionLink("New Movie", "MovieForm", "Movie")</button>
+
 @if (!Model.Any())
 {
     <p>We Dont Have Any Movie Yet.!</p>
@@ -18,7 +37,7 @@
         @foreach (var movies in Model)
         {
             <tr>
-                <td>@Html.ActionLink(@movies.Name, "Details", "Movie", new { id = movies.Id }, null) </td>
+                <td>@Html.ActionLink(@movies.Name, "Edit", "Movie", new { id = movies.Id }, null) </td>
                 <td>@movies.Genre.Name</td>
             </tr>
         }

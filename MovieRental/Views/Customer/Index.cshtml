@@ -19,7 +19,7 @@
             @foreach (var customers in Model)
             {
             <tr>
-                <td>@Html.ActionLink(@customers.Name,"Details","Customer",new { id = customers.ID },null) </td>
+                <td>@Html.ActionLink(@customers.Name,"Edit","Customer",new { id = customers.ID },null) </td>
                 <td>@customers.MembershipType.Name</td>
                 <td>@customers.MembershipType.DiscountRate%</td>
             </tr>
