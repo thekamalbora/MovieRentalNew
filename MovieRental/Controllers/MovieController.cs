@@ -39,8 +39,18 @@ namespace MovieRental.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult InsertUpdateMovie(Movie movie)
         {
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new MovieFormViewModel(movie)
+                {
+                    
+                    Genres=_context.Genres.ToList()
+                };
+                return View("MovieForm", viewModel);
+            }
             if(movie.Id==0)
             {
                 _context.Movies.Add(movie);
@@ -76,9 +86,10 @@ namespace MovieRental.Controllers
             {
                 return HttpNotFound();
             }
-            var viewModel = new MovieFormViewModel
+            var viewModel = new MovieFormViewModel(movies)
             {
-                Movie = movies,
+                
+            
                 Genres = _context.Genres.ToList()
             };
             return View("MovieForm", viewModel);

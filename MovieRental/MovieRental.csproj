@@ -172,6 +172,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MovieController.cs" />
+    <Compile Include="CustomValidation\Min18YearsIfAMember.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -214,6 +215,10 @@
     <Compile Include="Migrations\202006081900226_PopulateDataToGenre.cs" />
     <Compile Include="Migrations\202006081900226_PopulateDataToGenre.Designer.cs">
       <DependentUpon>202006081900226_PopulateDataToGenre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006101807325_IntitialModel.cs" />
+    <Compile Include="Migrations\202006101807325_IntitialModel.Designer.cs">
+      <DependentUpon>202006101807325_IntitialModel.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -337,6 +342,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202006081900226_PopulateDataToGenre.resx">
       <DependentUpon>202006081900226_PopulateDataToGenre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006101807325_IntitialModel.resx">
+      <DependentUpon>202006101807325_IntitialModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

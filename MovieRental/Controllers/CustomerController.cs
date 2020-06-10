@@ -37,8 +37,18 @@ namespace MovieRental.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult InsertUpdateCustomer(Customer customer)
         {
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new CustomerFormViewModel(customer)
+                {
+                    
+                    MembershipTypes = _context.MembershipTypes.ToList()
+                };
+                return View("CustomerForm", viewModel);
+            }
             if (customer.ID==0)
             {
                 _context.Customers.Add(customer);
@@ -62,9 +72,8 @@ namespace MovieRental.Controllers
             {
                 return HttpNotFound();
             }
-            var viewModel = new CustomerFormViewModel
+            var viewModel = new CustomerFormViewModel(customer)
             {
-                Customer = customer,
                 MembershipTypes = _context.MembershipTypes.ToList()
             };
             return View("CustomerForm", viewModel);
